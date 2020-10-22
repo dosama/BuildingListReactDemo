@@ -36,13 +36,13 @@ function BuildingList() {
                     </div>
                     <div className="col-md-2">
                     <Link to={`/buildingDetails/${building.id}`}>
-                    <button className="btn">
+                    <button className="btn btn-icon">
                         <span className="feather"><Icon.Edit /></span>
                       </button>
                       </Link>
                     </div>
                     <div className="col-md-2">
-                      <button className="btn">
+                      <button className="btn btn-icon">
                         <span className="feather"><Icon.Trash /></span>
                       </button>
                     </div>

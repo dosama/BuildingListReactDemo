@@ -60,3 +60,8 @@
     text-transform: uppercase;
   }
   
+  .btn-icon{
+    width: 24px;
+    height: 25px;
+    padding: 0px !important;
+  }
