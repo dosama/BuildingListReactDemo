@@ -2,31 +2,55 @@
     {
         "id": "f82c9382-1a88-45a6-81fd-9df843062d0b",
         "name": "Building11",
-        "location": "ARE"
+        "location": {
+            "id": "ARE",
+            "name": "United Arab Emirates",
+            "position": [24.192992571428572, 54.370252857142866]
+          }
     },
     {
         "id": "37c9a1e7-6717-42f6-805a-5d0d44b2e239",
         "name": "Building12",
-        "location": "ARG"
+        "location": {
+            "id": "ARG",
+            "name": "Argentina",
+            "position": [-38.53319952100841, -65.31919331932774]
+          }
     },
     {
         "id": "104592c2-93e6-4908-a402-d5aadee9d30d",
         "name": "Building13",
-        "location": "ARM"
+        "location": {
+            "id": "ARM",
+            "name": "Armenia",
+            "position": [40.0073217368421, 45.24748026315788]
+          }
     },
     {
         "id": "363bedbf-ea1e-4a11-8a02-da5610aa24d5",
         "name": "Building21",
-        "location": "AGO"
+        "location": {
+            "id": "AGO",
+            "name": "Angola",
+            "position": [-10.361866945205483, 16.907859164383563]
+          }
     },
     {
         "id": "76e1958f-99c9-49c1-a870-5ee4030ccbd3",
         "name": "Building22",
-        "location": "ALB"
+        "location": {
+            "id": "ALB",
+            "name": "Albania",
+            "position": [41.24549533333333, 20.086699571428568]
+          }
     },
     {
         "id": "e6b609c0-e874-4d01-852d-63355c141caa",
         "name": "Building31",
-        "location": "AFG"
+        "location": {
+            "id": "AFG",
+            "name": "Afghanistan",
+            "position": [34.79120620588236, 67.78638470588234]
+          }
     }
 ]

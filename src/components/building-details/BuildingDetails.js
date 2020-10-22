@@ -5,14 +5,21 @@ import buildings from '../../data/buildings.json';
 import { useParams } from 'react-router-dom';
 
 function BuildingDetails() {
-    const [building, setBuilding] = useState({});
+    const [building, setBuilding] = useState({location:{id:'-1'}});
     const params = useParams();
    
     useEffect(() => {
+        loadBuilding();
+    }, building);
+
+    useEffect(() => {
+        loadBuilding();
+    }, params.buildingId);
+
+    const loadBuilding =()=>{
         const currentBuilding = buildings.find((o)=> o.id == params.buildingId);
         setBuilding(currentBuilding?currentBuilding:{});
-       
-    }, [building]);
+    }
 
     const saveBuilding = ()=>{}
 
@@ -32,7 +39,7 @@ function BuildingDetails() {
                     </div>
                     <div className="form-group col-md-4">
                         <label htmlFor="location">Location</label>
-                        <select className="form-control" id="location" value={building.location}
+                        <select className="form-control" id="location" value={building.location.id}
                              >
                             <option key='0' value='-1' ></option>
                             {countries.map((country) => <option key={country.id}  value={country.id}>{country.name}</option>)}

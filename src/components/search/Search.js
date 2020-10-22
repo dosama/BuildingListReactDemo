@@ -41,9 +41,7 @@ const renderSuggestion = suggestion => (
 );
 const onChange = (event, { newValue }) => {
     setValue(newValue);
-    //console.log(newValue);
     const selectedUser = users.find((i)=> i.name == newValue);
-  //  console.log(selectedUser);
     userSearchEvent.userSearchCompletedEvent(selectedUser?selectedUser.id:'');
   };
 
