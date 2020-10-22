@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './BuildingList.css';
 import userSearchEvent from '../../events/user-search-event';
 import data from '../../data/users.json';
+import { Link } from 'react-router-dom';
+import * as Icon from 'react-feather';
+
 
 function BuildingList() {
 
@@ -18,18 +21,40 @@ function BuildingList() {
   return (
     <div className="BuildingList">
       <nav id="sidebarMenu" className="d-md-block bg-light sidebar collapse">
-        <div className="position-sticky pt-3">
+      <div className="position-sticky">
+      <div class="card">
+  <h5 class="card-header">Buildings</h5>
+  <div class="card-body p-0">
           <ul className="nav flex-column">
             {buildings.map(
               (building) =>
-                <li className="nav-item" key={building.id}>
-                  <a className="nav-link active" aria-current="page" href="#">
-                    {building.name}
-                  </a>
+                <li key={building.id}>
+                  <div className="row col-md-12">
+                    <div className="col-md-8 mt-2" >
+                    <Link key={building.id} to={`/buildingMap/${building.id}`}> {building.name} </Link>
+                      
+                    </div>
+                    <div className="col-md-2">
+                    <Link to={`/buildingDetails/${building.id}`}>
+                    <button className="btn">
+                        <span className="feather"><Icon.Edit /></span>
+                      </button>
+                      </Link>
+                    </div>
+                    <div className="col-md-2">
+                      <button className="btn">
+                        <span className="feather"><Icon.Trash /></span>
+                      </button>
+                    </div>
+                  </div>
                 </li>
             )}
           </ul>
         </div>
+   
+  </div>
+</div>
+
       </nav>
     </div>
   );

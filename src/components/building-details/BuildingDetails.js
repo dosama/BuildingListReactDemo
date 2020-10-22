@@ -11,6 +11,8 @@ function BuildingDetails() {
        
     }, [building]);
 
+    const saveBuilding = ()=>{}
+
     return (
         <div className="BuildingDetails">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -22,16 +24,15 @@ function BuildingDetails() {
                     <div className="form-group col-md-4">
                         <label htmlFor="name">Name</label>
                         <input className="form-control" id="name"
-                            value={building.name}
-                            onChange={handleDepartmentChange}  />
+                            value={building.name} />
                      
                     </div>
                     <div className="form-group col-md-4">
                         <label htmlFor="location">Location</label>
                         <select className="form-control" id="location" value={building.location}
-                            onChange={handlePromotionChange} >
+                             >
                             <option key='0' value='-1' ></option>
-                            {promotions.map((promo) => <option key={promo.id} value={promo.id}>{promo.code}</option>)}
+                            {countries.map((promo) => <option key={promo.id} value={promo.id}>{promo.code}</option>)}
 
                         </select>
                     </div>

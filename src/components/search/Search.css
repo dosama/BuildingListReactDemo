@@ -17,6 +17,7 @@
 
   #react-autowhatever-1 ul  {
     padding-inline-start: 0px;
+    margin-bottom: 0px !important;
   }
 
   #react-autowhatever-1 ul li div {

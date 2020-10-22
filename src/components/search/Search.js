@@ -48,7 +48,7 @@ const onChange = (event, { newValue }) => {
   };
 
 const inputProps = {
-    placeholder: 'Search',
+    placeholder: 'Search for user',
     value,
     onChange: onChange
   };
