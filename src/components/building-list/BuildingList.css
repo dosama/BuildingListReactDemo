@@ -26,7 +26,10 @@
       top: 5rem;
     }
   }
-  
+  .position-sticky {
+    position: sticky!important;
+    top: 50%;
+}
   .sidebar-sticky {
     position: relative;
     top: 0;

@@ -3,9 +3,12 @@ import './BuildingDetails.css';
 import countries from '../../data/countriesList.json';
 import buildings from '../../data/buildings.json';
 import { useParams } from 'react-router-dom';
+import Spinner from '../spinner/Spinner';
 
 function BuildingDetails() {
     const [building, setBuilding] = useState({location:{id:'-1'}});
+    const [isLoading, setIsLoading] = useState(false);
+
     const params = useParams();
    
     useEffect(() => {
@@ -17,14 +20,25 @@ function BuildingDetails() {
     }, params.buildingId);
 
     const loadBuilding =()=>{
+        setIsLoading(true);
+      setTimeout(() => {
         const currentBuilding = buildings.find((o)=> o.id == params.buildingId);
         setBuilding(currentBuilding?currentBuilding:{});
+        setIsLoading(false);
+      }, 1000);      
     }
 
     const saveBuilding = ()=>{}
 
     return (
+        
         <div className="BuildingDetails">
+            {isLoading ? (
+         
+            <Spinner></Spinner>
+        
+        ) :(
+            <div>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2">Building Details</h1>
             </div>
@@ -54,8 +68,10 @@ function BuildingDetails() {
                 </form>
 
             </div>
-        </div>
+        
+       </div>)}
 
+       </div>
     );
 }
 

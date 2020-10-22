@@ -42,7 +42,9 @@ const renderSuggestion = suggestion => (
 const onChange = (event, { newValue }) => {
     setValue(newValue);
     const selectedUser = users.find((i)=> i.name == newValue);
-    userSearchEvent.userSearchCompletedEvent(selectedUser?selectedUser.id:'');
+    if(selectedUser){
+      userSearchEvent.userSearchCompletedEvent(selectedUser?selectedUser.id:'');
+    }
   };
 
 const inputProps = {
