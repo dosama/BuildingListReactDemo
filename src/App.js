@@ -5,9 +5,32 @@ import BuildingList from './components/building-list/BuildingList';
 import BuildingMap from './components/building-map/BuildingMap';
 import BuildingDetails from './components/building-details/BuildingDetails';
 import Home from './components/home/Home';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route ,Switch } from 'react-router-dom';
 
 function App() {
+  const routes = [
+    {
+      path: "/buildingMap/:buildingId",
+      component: BuildingMap
+     
+    },
+    {
+      path: "/buildingDetails/:buildingId",
+      component: BuildingDetails
+     
+    }
+  ];
+  function RouteWithSubRoutes(route) {
+    return (
+      <Route
+        path={route.path}
+        render={props => (
+          // pass the sub-routes down to keep nesting
+          <route.component {...props} routes={route.routes} />
+        )}
+      />
+    );
+  }
   return (
 
 <div  className="App">
@@ -21,9 +44,10 @@ function App() {
    <main>
    <Switch>
    <Route path="/" exact  ><Home></Home></Route>
-   <Route path="/buildingMap/:buildingId"  ><BuildingMap></BuildingMap></Route>
-   <Route path="/buildingDetails/:buildingId"  ><BuildingDetails></BuildingDetails></Route>
-            </Switch>
+   {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+  </Switch>
        </main>
    </div>
   </div>

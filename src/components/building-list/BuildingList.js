@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BuildingList.css';
 import userSearchEvent from '../../events/user-search-event';
-import data from '../../data/users.json';
+import users from '../../data/users.json';
 import { Link } from 'react-router-dom';
 import * as Icon from 'react-feather';
 
@@ -12,7 +12,7 @@ function BuildingList() {
 
   userSearchEvent
     .on('userSearchCompleted', selectedUserValue => {
-      const users = data;
+
       const selectedUser = selectedUserValue ? users.find(user => user.id == selectedUserValue) : null;
       setBuildings(selectedUser ? selectedUser.buildings : []);
 
@@ -22,9 +22,9 @@ function BuildingList() {
     <div className="BuildingList">
       <nav id="sidebarMenu" className="d-md-block bg-light sidebar collapse">
       <div className="position-sticky">
-      <div class="card">
-  <h5 class="card-header">Buildings</h5>
-  <div class="card-body p-0">
+      <div className="card">
+  <h5 className="card-header">Buildings</h5>
+  <div className="card-body p-0">
           <ul className="nav flex-column">
             {buildings.map(
               (building) =>

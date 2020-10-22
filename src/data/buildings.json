@@ -1,0 +1,32 @@
+[
+    {
+        "id": "f82c9382-1a88-45a6-81fd-9df843062d0b",
+        "name": "Building11",
+        "location": "ARE"
+    },
+    {
+        "id": "37c9a1e7-6717-42f6-805a-5d0d44b2e239",
+        "name": "Building12",
+        "location": "ARG"
+    },
+    {
+        "id": "104592c2-93e6-4908-a402-d5aadee9d30d",
+        "name": "Building13",
+        "location": "ARM"
+    },
+    {
+        "id": "363bedbf-ea1e-4a11-8a02-da5610aa24d5",
+        "name": "Building21",
+        "location": "AGO"
+    },
+    {
+        "id": "76e1958f-99c9-49c1-a870-5ee4030ccbd3",
+        "name": "Building22",
+        "location": "ALB"
+    },
+    {
+        "id": "e6b609c0-e874-4d01-852d-63355c141caa",
+        "name": "Building31",
+        "location": "AFG"
+    }
+]

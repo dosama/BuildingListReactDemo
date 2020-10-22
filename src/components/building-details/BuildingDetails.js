@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import './BuildingDetails.css';
-
-
+import countries from '../../data/countriesList.json';
+import buildings from '../../data/buildings.json';
+import { useParams } from 'react-router-dom';
 
 function BuildingDetails() {
     const [building, setBuilding] = useState({});
-    const [countries, setCountries] = useState([]);
+    const params = useParams();
    
     useEffect(() => {
+        const currentBuilding = buildings.find((o)=> o.id == params.buildingId);
+        setBuilding(currentBuilding?currentBuilding:{});
        
     }, [building]);
 
@@ -32,7 +35,7 @@ function BuildingDetails() {
                         <select className="form-control" id="location" value={building.location}
                              >
                             <option key='0' value='-1' ></option>
-                            {countries.map((promo) => <option key={promo.id} value={promo.id}>{promo.code}</option>)}
+                            {countries.map((country) => <option key={country.id}  value={country.id}>{country.name}</option>)}
 
                         </select>
                     </div>
