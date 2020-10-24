@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import config from "../../config";
-import buildings from '../../data/buildings.json';
 import { useParams } from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
+import { useSelector } from "react-redux";
 
 function BuildingMap() {
   const [building, setBuilding] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [map, setMap] = useState(null);
-
+  const buildings = useSelector((state)=> state.buildings);
+  
   const params = useParams();
   const props = { ref: useRef() }
 
@@ -67,7 +68,7 @@ function BuildingMap() {
   }
   return (<div className="BuildingMap">
     { isLoading ? <Spinner /> : null}
-    <div {...props} style={{ visibility: isLoading ? `hidden` : `visible`, height: `100vh`, margin: `1em 0`, borderRadius: `0.5em` }} />
+    <div {...props} style={{ visibility: isLoading ? `hidden` : `visible`, height: `70vh`, margin: `1em 0`, borderRadius: `0.5em` }} />
   </div>
   );
 

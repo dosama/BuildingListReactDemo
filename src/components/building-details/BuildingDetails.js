@@ -1,14 +1,14 @@
 import React, { useEffect, useState} from 'react';
 import './BuildingDetails.css';
 import countries from '../../data/countriesList.json';
-import buildings from '../../data/buildings.json';
 import { useParams } from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
+import { useDispatch, useSelector } from "react-redux";
 
 function BuildingDetails() {
     const [building, setBuilding] = useState({location:{id:'-1'}});
     const [isLoading, setIsLoading] = useState(false);
-
+    const buildings = useSelector((state)=> state.buildings);
     const params = useParams();
    
     useEffect(() => {

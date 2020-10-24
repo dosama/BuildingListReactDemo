@@ -5,25 +5,31 @@ import users from '../../data/users.json';
 import { Link } from 'react-router-dom';
 import * as Icon from 'react-feather';
 import Spinner from '../spinner/Spinner';
-
+import { useDispatch, useSelector } from "react-redux";
+import actions from '../../actions/actions';
 
 function BuildingList() {
 
   const [buildings, setBuildings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+ 
 
   userSearchEvent
     .on('userSearchCompleted', selectedUserValue => {
       setIsLoading(true);
       setTimeout(() => {
         const selectedUser = selectedUserValue ? users.find(user => user.id == selectedUserValue) : null;
+        dispatch(actions.SET_USER(selectedUser));
         setBuildings(selectedUser ? selectedUser.buildings : []);
         setIsLoading(false);
       }, 1000);
 
     });
 
+    const addBuilding = ()=>{
 
+    } 
   return (
     <div className="BuildingList">
       <nav id="sidebarMenu" className="d-md-block bg-light sidebar collapse">
@@ -64,6 +70,10 @@ function BuildingList() {
               </div>
             </div>
           )}
+          <div className="row">
+          <button type="button" className="btn btn-sm btn-primary" onClick={addBuilding}>Add Building</button>
+                  
+          </div>
       </nav>
     </div>
   );
