@@ -1,27 +1,33 @@
 import _ from 'lodash';
+import actions from '../actions/actions';
 import buildings from '../data/buildings.json';
 const initialState = {
     buildings: buildings,
-    user: {}
+    user: null
 }
 
 export default function rootReducer(state = initialState, action) {
+    let newState = {...state};
 
     switch (action.type) {
         case 'SET_USER':
             return {
                 ...state, user: action.payload
             };
-        case 'ADD_USER_BUILDING':
+        case 'ADD_BUILDING':
             return {
                 ...state, 
-                buildings: [...state.buildings, action.payload],
-                user: { ...state.user, buildings: [...state.user.buildings, action.payload] }
+                buildings: [...state.buildings, action.payload]
             };
-        case 'RREMOVE_USER_BUILDING':
-            const newState = {...state};
-            _.remove(newState.buildings,  action.payload );
-            _.remove(newState.user.buildings, action.payload );
+        case 'EDIT_BUILDING':
+           
+            const buildingDetails = newState.buildings.find((o)=> o.id == action.payload.id );
+            buildingDetails.name = action.payload.name;
+            buildingDetails.location = action.payload.location;
+            return newState;
+        case 'RREMOVE_BUILDING':
+            _.remove(newState.buildings,  (o)=> o.id == action.payload );
+           
             return newState;
         default:
             return state;

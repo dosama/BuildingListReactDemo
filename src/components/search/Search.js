@@ -3,16 +3,17 @@ import Autosuggest from 'react-autosuggest';
 import './Search.css';
 import userSearchEvent from '../../events/user-search-event';
 import data from '../../data/users.json';
+import actions from '../../actions/actions';
+import { useDispatch } from 'react-redux';
 
 function Search() {
     const [suggestions, setSuggestions] = useState([]);
     const [users, setusers] = useState([]);
     const [value, setValue] = useState('');
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        
       setusers(data);
-      
     }, [users]);
 
     const getSuggestions = value => {
@@ -43,7 +44,7 @@ const onChange = (event, { newValue }) => {
     setValue(newValue);
     const selectedUser = users.find((i)=> i.name == newValue);
     if(selectedUser){
-      userSearchEvent.userSearchCompletedEvent(selectedUser?selectedUser.id:'');
+        dispatch(actions.SET_USER(selectedUser));
     }
   };
 

@@ -9,7 +9,7 @@ function BuildingMap() {
   const [isLoading, setIsLoading] = useState(false);
   const [map, setMap] = useState(null);
   const buildings = useSelector((state)=> state.buildings);
-  
+
   const params = useParams();
   const props = { ref: useRef() }
 
@@ -46,7 +46,6 @@ function BuildingMap() {
     setBuilding(currentBuilding ? currentBuilding : null);
 
     if (building) {
-      console.log('intialize map');
       const myLatLng = { lat: building.location.position[0], lng: building.location.position[1] };
 
       const map = new window.google.maps.Map(props.ref.current, {
