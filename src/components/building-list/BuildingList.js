@@ -6,6 +6,7 @@ import Spinner from '../spinner/Spinner';
 import {  useDispatch, useSelector } from "react-redux";
 import actions from '../../actions/actions';
 import _ from 'lodash';
+import { useToasts } from 'react-toast-notifications';
 
 function BuildingList() {
 
@@ -13,7 +14,7 @@ function BuildingList() {
   const [isLoading, setIsLoading] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
- 
+  const { addToast } = useToasts();
     useEffect(()=>{
       if(user)
       {
@@ -29,7 +30,11 @@ function BuildingList() {
     const userObj ={...user}; 
     _.remove(userObj.buildings, (o)=> o.id ==buildingId );
     dispatch(actions.RREMOVE_BUILDING(buildingId));
-    dispatch(actions.SET_USER(userObj));    
+    dispatch(actions.SET_USER(userObj));  
+    addToast('Building Removed Successfully ....', {
+      appearance: 'success',
+      autoDismiss: true,
+    })  
   
     }
   return (
@@ -60,7 +65,7 @@ function BuildingList() {
                               </Link>
                             </div>
                             <div className="col-md-2">
-                              <button className="btn btn-icon" onClick={()=>removeBuilding(building.id)}>
+                              <button className="btn btn-icon"  onClick={()=>removeBuilding(building.id)}>
                                 <span className="feather"><Icon.Trash /></span>
                               </button>
                             </div>
@@ -73,7 +78,7 @@ function BuildingList() {
             )}
         </div>
         <Link to={`/buildingDetails/0`}>
-        <button type="button" className="col-md-12 btn btn-sm btn-primary">Add Building</button>
+        <button type="button" disabled={!user} className="col-md-12 btn btn-sm btn-primary">Add Building</button>
         </Link>
       
       </nav>

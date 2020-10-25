@@ -6,6 +6,7 @@ import BuildingMap from './components/building-map/BuildingMap';
 import BuildingDetails from './components/building-details/BuildingDetails';
 import Home from './components/home/Home';
 import { Route ,Switch } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications';
 
 function App() {
   const routes = [
@@ -35,6 +36,7 @@ function App() {
 
 <div  className="App">
     <Header></Header>
+    <ToastProvider>
 <div className="container-fluid">
   <div className="row">
     <div className="col-md-3 col-lg-2">
@@ -52,6 +54,7 @@ function App() {
    </div>
   </div>
 </div>
+</ToastProvider>
 
  </div>
 

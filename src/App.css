@@ -2,3 +2,14 @@
 body {
   font-size: .875rem; 
 }
+.css-1jgv6z-ToastContainer {
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 8px;
+  position: fixed;
+  z-index: 10000 !important;
+  top: 0;
+  right: 0;
+}

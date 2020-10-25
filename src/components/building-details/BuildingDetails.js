@@ -6,6 +6,7 @@ import Spinner from '../spinner/Spinner';
 import { useDispatch, useSelector } from "react-redux";
 import actions from '../../actions/actions';
 import { Guid } from 'js-guid';
+import { useToasts } from 'react-toast-notifications';
 
 function BuildingDetails() {
     const [building, setBuilding] = useState({ name : '',location: { id: '-1' } });
@@ -15,7 +16,7 @@ function BuildingDetails() {
     const user = useSelector((state) => state.user);
     const params = useParams();
     const dispatch = useDispatch();
-
+    const { addToast } = useToasts();
     useEffect(() => {
         if(!mode)
         {
@@ -29,8 +30,10 @@ function BuildingDetails() {
     },[ params.buildingId]);
 
     const loadBuilding = () => {
+        if (params.buildingId == 0) {
         setMode('CREATE');
-        if (params.buildingId != 0) {
+        setBuilding({ name : '',location: { id: '-1' } });
+        }else {
             setMode('Edit');
             setIsLoading(true);
             setTimeout(() => {
@@ -52,6 +55,10 @@ function BuildingDetails() {
             const userData =  { ...user, buildings: [...user.buildings, data] };
             dispatch(actions.ADD_BUILDING(data));
             dispatch(actions.SET_USER(userData));
+            addToast('Building Added Successfully ....', {
+                appearance: 'success',
+                autoDismiss: true,
+              })
         }else{
             data = {
                 "id": params.buildingId,
@@ -64,7 +71,12 @@ function BuildingDetails() {
             userBuildingDetails.location = data.location.id;
             dispatch(actions.EDIT_BUILDING(data));
             dispatch(actions.SET_USER(userObj));
+            addToast('Building Updated Successfully ....', {
+                appearance: 'success',
+                autoDismiss: true,
+              })
         }
+      
     }
 
     const handleLocationChange = (event)=>{

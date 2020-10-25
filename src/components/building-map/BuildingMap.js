@@ -45,7 +45,7 @@ function BuildingMap() {
 
     setBuilding(currentBuilding ? currentBuilding : null);
 
-    if (building) {
+    if (window.google && building) {
       const myLatLng = { lat: building.location.position[0], lng: building.location.position[1] };
 
       const map = new window.google.maps.Map(props.ref.current, {
